@@ -1,0 +1,1 @@
+# shopify-banner-with-2-columns-as-section
