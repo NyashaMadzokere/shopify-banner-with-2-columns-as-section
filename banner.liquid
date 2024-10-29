@@ -1,0 +1,101 @@
+{% schema %}
+{
+  "name": "Banner Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Banner Heading",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "text",
+      "id": "banner_subheading",
+      "label": "Banner Subheading",
+      "default": "Discover our latest collection!"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_text",
+      "label": "Banner Text",
+      "default": "Explore the best products curated just for you."
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_image",
+      "label": "Banner Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="custom-banner-section">
+  <div class="container">
+    <div class="banner-content">
+      <div class="text-column">
+        <h1>{{ section.settings.banner_heading }}</h1>
+        <h3>{{ section.settings.banner_subheading }}</h3>
+        <p>{{ section.settings.banner_text }}</p>
+      </div>
+      <div class="image-column">
+        {% if section.settings.banner_image %}
+          <img src="{{ section.settings.banner_image | img_url: 'master' }}" alt="{{ section.settings.banner_heading }}">
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.custom-banner-section {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.custom-banner-section .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.banner-content {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+
+.text-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.text-column h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.text-column h3 {
+  font-size: 1.5em;
+  color: #666;
+}
+
+.image-column {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-column img {
+  width: 100%;
+  height: auto;
+}
+</style>
